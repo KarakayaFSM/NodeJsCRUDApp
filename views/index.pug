@@ -1,11 +1,16 @@
 extends layout
 
 block content
-  h1 #{title}
+  // '=' left side of the equal sign must be adjacent to h1 element
+  //comments have to be in a separate line from the expressions
+  h1=title    
   form(action="/", method="POST")
     input(name="lead_email", type="email", placeholder="Enter your email address")
     button(type="submit") Submit
   if leads
      h1 Leads  
      for lead in leads
-       p #{lead.Email}
+       p 
+         span #{lead.Email}
+         | &nbsp
+         a(href= "/lead/" + lead.id) Details
