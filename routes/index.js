@@ -1,9 +1,16 @@
 var express = require('express');
-
-var router = express.Router();
 let index = require('../controllers')
 
-/* GET home page. */
-module.exports = router.get('/',index.index);
-module.exports = router.post('/',index.PostIndex);
+var router = express.Router();
+
+/* Home page */
+router.get('/',index.index);
+router.post('/',index.PostIndex);
+
+/* List of Leads */
+router.get('/leads',index.show_leads);
+
+
+
+module.exports = router;
 
