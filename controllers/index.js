@@ -1,10 +1,12 @@
   const models = require('../models')
 
   exports.index = (req, res, next) => {
-    res.render('index', {title: 'Express'});
+    res.render('index', {
+      title: 'Express'
+    });
   }
 
-  exports.PostIndex = (req, res, next) => {
+  exports.index_POST = (req, res, next) => {
     models.Lead.create({
       Email: req.body.lead_email
     }).then((lead) => {
@@ -13,17 +15,59 @@
   }
 
   exports.show_leads = (req, res, next) => {
-    return models.Lead.findAll().then(leads =>{
-      res.render('index', {title: 'Express', leads: leads});
-    })
+    return models.Lead.findAll().then(leads => {
+      res.render('index', {
+        title: 'Express',
+        leads: leads
+      });
+    });
   }
 
   exports.show_lead = (req, res, next) => {
     return models.Lead.findOne({
-      where:{
+      where: {
         id: req.params.lead_id
       }
     }).then(lead => {
-      res.render('lead',{lead:lead});
+      res.render('lead/lead', {
+        lead: lead
+      });
     });
+  }
+
+  exports.show_lead = function (req, res, next) {
+    return models.Lead.findOne({
+      where: {
+        id: req.params.lead_id
+      }
+    }).then(lead => {
+      res.render('lead/lead', {
+        lead: lead
+      });
+    });
+  }
+
+  exports.edit_lead_GET = (req, res, next) => {
+    return models.Lead.findOne({
+      where: {
+        id: req.params.lead_id
+      }
+    }).then(lead => {
+      res.render('lead/edit_lead', {
+        lead: lead
+      });
+    });
+  }
+
+  exports.edit_lead_POST = (req, res, next) => {
+    return models.Lead.update({
+        Email: req.body.lead_email
+      }, {
+        where: {
+          id: req.params.lead_id
+        }
+      })
+      .then(result => {
+        res.redirect('/lead/' + req.params.lead_id);
+      });
   }
