@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1= title
+  form(action="/", method="POST")
+    input(name="lead_email", type="email", placeholder="Enter your email address")
+    button(type="submit") Submit
