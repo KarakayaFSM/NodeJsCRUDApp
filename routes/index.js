@@ -20,6 +20,9 @@ router.post('/lead/:lead_id/edit',index.edit_lead_POST);
 /* Delete an individual Lead */
 router.post('/lead/:lead_id/delete',index.delete_lead_POST)
 
+/* Delete an individual Lead Using AJAX */
+router.post('/lead/:lead_id/delete_json',index.delete_json_POST)
+
 
 module.exports = router;
 
