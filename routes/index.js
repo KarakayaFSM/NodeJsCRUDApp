@@ -16,5 +16,10 @@ router.get('/lead/:lead_id',index.show_lead);
 /* Edit an individual Lead */
 router.get('/lead/:lead_id/edit',index.edit_lead_GET);
 router.post('/lead/:lead_id/edit',index.edit_lead_POST);
+
+/* Delete an individual Lead */
+router.post('/lead/:lead_id/delete',index.delete_lead_POST)
+
+
 module.exports = router;
 

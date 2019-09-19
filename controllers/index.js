@@ -71,3 +71,14 @@
         res.redirect('/lead/' + req.params.lead_id);
       });
   }
+
+  exports.delete_lead_POST = (req, res, next) => {
+    return models.Lead.destroy({
+        where: {
+          id: req.params.lead_id
+        }
+      })
+      .then(result => {
+        res.redirect('/leads');
+      });
+  }
