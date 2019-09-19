@@ -8,7 +8,7 @@
 
   exports.index_POST = (req, res, next) => {
     models.Lead.create({
-      Email: req.body.lead_email
+      email: req.body.lead_email
     }).then((lead) => {
       res.redirect('/leads');
     });
@@ -16,7 +16,7 @@
 
   exports.show_leads = (req, res, next) => {
     return models.Lead.findAll().then(leads => {
-      res.render('index', {
+      res.render('lead/leads', {
         title: 'Express',
         leads: leads
       });
@@ -61,7 +61,7 @@
 
   exports.edit_lead_POST = (req, res, next) => {
     return models.Lead.update({
-        Email: req.body.lead_email
+        email: req.body.lead_email
       }, {
         where: {
           id: req.params.lead_id
