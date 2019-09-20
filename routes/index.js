@@ -1,16 +1,7 @@
 var express = require('express');
-let index = require('../controllers/index')
-let user = require('../controllers/user')
+let index = require('../controllers')
 
 var router = express.Router();
-
-/* Login page */
-router.get('/login', user.login_GET);
-router.post('/login', user.login_POST);
-
-/* Signup page */
-router.get('/signup', user.signup_GET);
-router.post('/signup', user.signup_POST);
 
 /* Home page */
 router.get('/',index.index);
